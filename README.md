@@ -3,8 +3,8 @@ Microfluidic assay measures neutrophil spontaneous motility in whole blood for s
 
 Code developed by Julianne Jorgensen : June 2017 – Massachusetts General Hospital - Boston
 
-Data analysis
-Files were converted to standard AVI format	Nikon Elements or ImageJ	-
+## Data analysis
+Files were converted to standard AVI format	Nikon Elements or ImageJ
 
 **Step** |**Software Package** |**Code**
 --- |--- |---
@@ -13,7 +13,7 @@ Cell tracking was performed automatically from brightfield images	ImageCV and Sc
 Cell motility pattern identification (track number, video frame, cell diameter, x position, y position, distance, and velocity - definitions in Table S1.) 	|ImageCV, TrackPy, and SciKit-Learn packages in Python.	|Cell_counter.py, Cell_counter_unstained_new.py, Cell-counter-unstained.py
 
 
-Machine learning
+## Machine learning
 
 **Step** |**Software Package** |**Code**
 --- |--- |---
