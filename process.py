@@ -89,15 +89,11 @@ def shuffle_train(X, Y, teX):
     lr = LogisticRegression(C=0.7)
     pf = PolynomialFeatures()
     sX = scalar.fit_transform(sX)
-    #sX = pf.fit_transform(sX)
     lr.fit(sX, sY)
 
     teX = scalar.transform(teX)
-    #teX = pf.fit_transform(teX)
-
+    
     X = scalar.transform(X)
-    #X = pf.fit_transform(X)
-
 
     tePY = lr.predict_proba(teX)[:, 1]
     trPY = lr.predict_proba(X)[:, 1]
@@ -156,17 +152,20 @@ def main():
         train_auc = roc_auc_score(trY, trPY)
 
         fpr, tpr, _ = roc_curve(teY, tePY)
-        #plt.plot(fpr, tpr)
         accum.append([heldout_auc, train_auc])
+    
     print np.mean(accum, axis=0), np.var(accum, axis=0)
     accum = np.asarray(accum)
     plt.subplot(2,1,1)
     plt.title("Histogram of AUC from ML based model")
     plt.hist(accum[:, 0], bins=100, normed=True, range=[0,1])
     plt.xlabel("Validation AUC")
-    plt.subplot(2,1,2)
+    plt.subplot(2, 1, 2)
     plt.hist(accum[:, 1], bins=100, normed=True, range=[0,1])
     plt.xlim([0, 1])
     plt.xlabel("Train AUC")
     plt.show()
-main()
+    
+    
+if __name__ == "__main__":
+    main()
